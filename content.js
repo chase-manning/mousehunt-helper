@@ -1,19 +1,20 @@
 const INTERVAL = 100;
 
-const hornAlert = () => {
-  const horn = document.getElementsByClassName(
-    "huntersHornView__timerState--type-ready"
-  );
+const hornReady = () => {
+  const class_ = "huntersHornView__timerState--type-ready";
+  const horn = document.getElementsByClassName(class_);
+  if (!horn) return false;
+  if (horn.length === 0) return false;
   const styles = window.getComputedStyle(horn[0]);
-  const display = styles.display;
+  return styles.display !== "none";
+};
 
-  if (display !== "none") {
-    const audio = new Audio(
-      "https://www.soundjay.com/buttons/sounds/button-1.mp3"
-    );
-    audio.volume = 0.1;
-    audio.play();
-  }
+const hornAlert = () => {
+  if (!hornReady()) return;
+  const alert = "https://www.soundjay.com/buttons/sounds/button-1.mp3";
+  const audio = new Audio(alert);
+  audio.volume = 0.1;
+  audio.play();
 };
 
 let checkElementInterval = setInterval(async () => {
@@ -43,6 +44,12 @@ let checkElementInterval = setInterval(async () => {
       campPageBanner[0].parentElement.removeChild(campPageBanner[0]);
     }
 
+    // Remove the easter event
+    if (easterEvent.length > 0) {
+      easterEvent[0].parentElement.removeChild(easterEvent[0]);
+    }
+
+    // Make sound for horn
     hornAlert();
   }, INTERVAL * 10);
 
@@ -60,7 +67,4 @@ let checkElementInterval = setInterval(async () => {
 
   // Remove the header
   header[0].parentElement.removeChild(header[0]);
-
-  // Remove the easter event
-  easterEvent[0].parentElement.removeChild(easterEvent[0]);
 }, INTERVAL);

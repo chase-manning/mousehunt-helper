@@ -1,7 +1,19 @@
 const INTERVAL = 100;
 
 const hornAlert = () => {
-  const horn = getElementsByClassName("horn");
+  const horn = document.getElementsByClassName(
+    "huntersHornView__timerState--type-ready"
+  );
+  const styles = window.getComputedStyle(horn[0]);
+  const display = styles.display;
+
+  if (display !== "none") {
+    const audio = new Audio(
+      "https://www.soundjay.com/buttons/sounds/button-1.mp3"
+    );
+    audio.volume = 0.1;
+    audio.play();
+  }
 };
 
 let checkElementInterval = setInterval(async () => {
@@ -15,6 +27,7 @@ let checkElementInterval = setInterval(async () => {
   const campPageBanner = document.getElementsByClassName("campPage-banner");
   if (!campPageBanner) return;
   const footer = document.getElementsByClassName("pageFrameView-footer");
+  if (!footer) return;
 
   // We've got everything we need
   clearInterval(checkElementInterval);
@@ -22,8 +35,12 @@ let checkElementInterval = setInterval(async () => {
   // Setting interveral for regular triggers
   setInterval(() => {
     // Remove the banner
-    campPageBanner[0].parentElement.removeChild(campPageBanner[0]);
-  }, INTERVAL);
+    if (campPageBanner.length > 0) {
+      campPageBanner[0].parentElement.removeChild(campPageBanner[0]);
+    }
+
+    hornAlert();
+  }, INTERVAL * 10);
 
   // Hiding the sidebar and background
   pageFrame[0].style.gridTemplateColumns = "1fr";

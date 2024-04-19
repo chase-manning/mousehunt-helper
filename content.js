@@ -1,4 +1,5 @@
 const INTERVAL = 100;
+const BACKGROUND = "https://i.imgur.com/4INJWKY.jpeg";
 
 const hornReady = () => {
   const class_ = "huntersHornView__timerState--type-ready";
@@ -33,6 +34,18 @@ let checkElementInterval = setInterval(async () => {
   if (!header) return;
   const easterEvent = document.getElementsByClassName("QuestSpringHuntCampHUD");
   if (!easterEvent) return;
+  const background = document.getElementsByClassName("PageCamp");
+  if (!background) return;
+  const oldBackground = document.getElementById("mousehuntContainer");
+  if (!oldBackground) return;
+  const oldBackground2 = document.getElementsByClassName(
+    "pageFrameView-contentContainer"
+  );
+  if (!oldBackground2) return;
+  const oldBackground3 = document.getElementsByClassName(
+    "pageFrameView-content"
+  );
+  if (!oldBackground3) return;
 
   // We've got everything we need
   clearInterval(checkElementInterval);
@@ -47,6 +60,16 @@ let checkElementInterval = setInterval(async () => {
     // Remove the easter event
     if (easterEvent.length > 0) {
       easterEvent[0].parentElement.removeChild(easterEvent[0]);
+    }
+
+    // Full screen the travel
+    const travel = document.getElementsByClassName("travelPage-mapContainer");
+    if (travel && travel.length > 0) {
+      travel[1].style.position = "fixed";
+      travel[1].style.top = "0";
+      travel[1].style.left = "0";
+      travel[1].style.width = "100dvw";
+      travel[1].style.height = "100dvh";
     }
 
     // Make sound for horn
@@ -67,4 +90,12 @@ let checkElementInterval = setInterval(async () => {
 
   // Remove the header
   header[0].parentElement.removeChild(header[0]);
+
+  // Changing background
+  background[0].style.backgroundColor = "#604530";
+  background[0].style.backgroundImage = `url(${BACKGROUND})`;
+  background[0].style.backgroundSize = "cover";
+  oldBackground.style.background = "none";
+  oldBackground2[0].style.background = "none";
+  oldBackground3[0].style.background = "none";
 }, INTERVAL);

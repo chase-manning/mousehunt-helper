@@ -30,8 +30,14 @@ let checkElementInterval = setInterval(async () => {
   if (!campPageBanner) return;
   const footer = document.getElementsByClassName("pageFrameView-footer");
   if (!footer) return;
-  const header = document.getElementsByClassName("mousehuntHeaderView");
-  if (!header) return;
+  const header1 = document.getElementsByClassName(
+    "mousehuntHeaderView-gameBanner"
+  );
+  if (!header1) return;
+  const header2 = document.getElementsByClassName(
+    "mousehuntHeaderView-newsTicker"
+  );
+  if (!header2) return;
   const easterEvent = document.getElementsByClassName("QuestSpringHuntCampHUD");
   if (!easterEvent) return;
   const background = document.getElementsByClassName("PageCamp");
@@ -89,7 +95,8 @@ let checkElementInterval = setInterval(async () => {
   footer[0].parentElement.removeChild(footer[0]);
 
   // Remove the header
-  header[0].parentElement.removeChild(header[0]);
+  header1[0].parentElement.removeChild(header1[0]);
+  header2[0].parentElement.removeChild(header2[0]);
 
   // Changing background
   background[0].style.backgroundColor = "#604530";

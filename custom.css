@@ -5,3 +5,63 @@
 .inventoryPage-tagContent-tagGroup {
   background: white;
 }
+
+.pageSidebarView {
+  display: none;
+}
+
+.pageFrameView-column {
+  display: none;
+}
+
+.campPage-banner {
+  display: none;
+}
+
+.pageFrameView-footer {
+  display: none;
+}
+
+.mousehuntHeaderView {
+  background: none;
+}
+
+.mousehuntHeaderView-gameBanner {
+  display: none;
+}
+
+.mousehuntHeaderView-newsTicker {
+  display: none;
+}
+
+.PageCamp {
+  background-color: #604530;
+  background: url(https://i.imgur.com/4INJWKY.jpeg) !important;
+  background-size: cover;
+}
+
+.mousehuntContainer {
+  background: none !important;
+}
+
+.pageFrameView-contentContainer {
+  background: none !important;
+}
+
+.pageFrameView-content {
+  background: none !important;
+}
+
+.travelPage-mapContainer {
+  position: fixed !important;
+  top: 16dvh !important;
+  left: 0 !important;
+  width: 100dvw !important;
+  height: 100dvh !important;
+}
+
+.pageFrameView {
+  grid-template-columns: 1fr !important;
+  width: 760px;
+  margin: auto;
+}

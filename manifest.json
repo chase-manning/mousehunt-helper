@@ -6,7 +6,8 @@
   "content_scripts": [
     {
       "js": ["content.js"],
-      "matches": ["https://www.mousehuntgame.com/*"]
+      "matches": ["https://www.mousehuntgame.com/*"],
+      "css": ["custom.css"]
     }
   ]
 }

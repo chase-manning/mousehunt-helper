@@ -1,3 +1,4 @@
+const ALARM_ENABLED = false;
 const INTERVAL = 1000;
 
 const hornReady = () => {
@@ -11,6 +12,7 @@ const hornReady = () => {
 
 const hornAlert = () => {
   if (!hornReady()) return;
+  if (!ALARM_ENABLED) return;
   const alert = "https://www.soundjay.com/buttons/sounds/button-1.mp3";
   const audio = new Audio(alert);
   audio.volume = 0.1;
